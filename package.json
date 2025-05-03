@@ -1,0 +1,80 @@
+{
+  "name": "frontend-mentor-nextjs-ts-template",
+  "version": "1.4.1",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "postbuild": "next-sitemap",
+    "start": "next start",
+    "lint": "next lint",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build",
+    "prepare": "husky install && chmod ug+x .husky/*",
+    "commit": "./node_modules/cz-customizable/standalone.js",
+    "type-check": "tsc --noEmit",
+    "lint-staged": "lint-staged",
+    "chromatic": "npx chromatic",
+    "generate-color-style-sheet": "tsc ./generateColorStyleSheet.ts && node ./generateColorStyleSheet.js"
+  },
+  "dependencies": {
+    "@semantic-release/github": "^9.2.3",
+    "@sentry/nextjs": "^8.47.0",
+    "@svgr/webpack": "^6.2.1",
+    "@types/classnames": "^2.3.1",
+    "include-media": "^1.4.10",
+    "next": "^15.1.6",
+    "next-sitemap": "^3.1.23",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "sass": "^1.49.8"
+  },
+  "devDependencies": {
+    "@chromatic-com/storybook": "^3",
+    "@commitlint/cli": "^18.0.0",
+    "@commitlint/config-conventional": "^18.0.0",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^11.0.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.1",
+    "@storybook/addon-a11y": "^8.4.5",
+    "@storybook/addon-essentials": "^8.4.5",
+    "@storybook/addon-interactions": "^8.4.5",
+    "@storybook/addon-links": "^8.4.5",
+    "@storybook/blocks": "^8.4.5",
+    "@storybook/manager-api": "^8.4.5",
+    "@storybook/nextjs": "^8.4.5",
+    "@storybook/react": "^8.4.5",
+    "@storybook/test": "^8.4.5",
+    "@storybook/theming": "^8.4.5",
+    "@types/node": "^20.8.7",
+    "@types/react": "^18.2.29",
+    "chokidar": "^4.0.3",
+    "chromatic": "^9.0.0",
+    "commitizen": "^4.3.0",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "cz-conventional-changelog": "^3.3.0",
+    "cz-customizable": "^7.0.0",
+    "eslint": "8.9.0",
+    "eslint-config-next": "^15.0.3",
+    "husky": "^8.0.3",
+    "lint-staged": "^15.0.2",
+    "storybook": "^8.4.5",
+    "storybook-addon-pseudo-states": "^2.0.1",
+    "tsconfig-paths-webpack-plugin": "^4.2.0",
+    "typescript": "^5.4.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "cz-customizable": {
+      "config": ".cz-config.js"
+    }
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "bash -c 'npm run type-check'"
+    ]
+  }
+}

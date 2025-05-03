@@ -1,0 +1,26 @@
+@import "utils";
+
+@mixin Typography($font-size, $font-weight, $font-style, $line-height, $letter-spacing, $font-family) {
+  font-size: $font-size;
+  font-weight: $font-weight;
+  font-style: $font-style;
+  line-height: $line-height;
+  letter-spacing: $letter-spacing;
+  font-family: $font-family;
+}
+
+@mixin text-preset-1 {
+  @include Typography(60px, 800, normal, 110%, -1px, 'sans-serif');
+
+  @include media('<tablet') {
+    @include Typography(30px, 800, normal, 110%, -1px, 'sans-serif');
+  }
+}
+
+@mixin text-preset-2 {
+  @include Typography(40px, 700, normal, 110%, -1px, 'sans-serif');
+
+  @include media('<tablet') {
+    @include Typography(24px, 700, normal, 110%, -1px, 'sans-serif');
+  }
+}
