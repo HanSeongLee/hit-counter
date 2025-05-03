@@ -17,6 +17,9 @@ dependencies:
   '@types/classnames':
     specifier: ^2.3.1
     version: 2.3.1
+  '@upstash/redis':
+    specifier: ^1.34.8
+    version: 1.34.8
   include-media:
     specifier: ^1.4.10
     version: 1.4.10
@@ -25,7 +28,7 @@ dependencies:
     version: 15.1.6(@babel/core@7.23.2)(@opentelemetry/api@1.9.0)(react-dom@18.3.1)(react@18.3.1)(sass@1.49.8)
   next-sitemap:
     specifier: ^3.1.23
-    version: 3.1.23(@next/env@15.0.3)(next@15.1.6)
+    version: 3.1.23(@next/env@15.1.6)(next@15.1.6)
   react:
     specifier: ^18.3.1
     version: 18.3.1
@@ -3315,10 +3318,6 @@ packages:
       react: 18.3.1
     dev: true
 
-  /@next/env@15.0.3:
-    resolution: {integrity: sha512-t9Xy32pjNOvVn2AS+Utt6VmyrshbpfUMhIjFO60gI58deSo/KgLOp31XZ4O+kY/Is8WAGYwA5gR7kOb1eORDBA==}
-    dev: false
-
   /@next/env@15.1.6:
     resolution: {integrity: sha512-d9AFQVPEYNr+aqokIiPLNK/MTyt3DWa/dpKveiAaVccUadFbhFEvY6FXYX2LJO2Hv7PHnLBu2oWwB4uBuHjr/w==}
 
@@ -6233,6 +6232,12 @@ packages:
       eslint-visitor-keys: 3.4.3
     dev: true
 
+  /@upstash/redis@1.34.8:
+    resolution: {integrity: sha512-eGJgOKc+2Uq4AdSM0lNx+WvFFhQeyhJ32SGNuSniLPg4lNb6m5h2AQ77qL+TgWiMZO8HCQ82Zsc/RlVBevCWTg==}
+    dependencies:
+      crypto-js: 4.2.0
+    dev: false
+
   /@vitest/expect@2.0.5:
     resolution: {integrity: sha512-yHZtwuP7JZivj65Gxoi8upUN2OzHTi3zVfjwdpu2WrvCZPLwsJ2Ey5ILIPccoW23dd/zQBlJ4/dhi7DWNyXCpA==}
     dependencies:
@@ -7638,6 +7643,10 @@ packages:
       randombytes: 2.1.0
       randomfill: 1.0.4
     dev: true
+
+  /crypto-js@4.2.0:
+    resolution: {integrity: sha512-KALDyEYgpY+Rlob/iriUtjV6d5Eq+Y191A5g4UqLAi8CyGP9N1+FdVbkc1SxKc2r4YAYqG8JzO2KGL+AizD70Q==}
+    dev: false
 
   /crypto-random-string@4.0.0:
     resolution: {integrity: sha512-x8dy3RnvYdlUcPOjkEHqozhiwzKNSq7GcPuXFbnyMOCHxX8V3OgIg/pYuabl2sbUPfIJaeAQB7PMOK8DFIdoRA==}
@@ -10458,7 +10467,7 @@ packages:
   /nerf-dart@1.0.0:
     resolution: {integrity: sha512-EZSPZB70jiVsivaBLYDCyntd5eH8NTSMOn3rB+HxwdmKThGELLdYv8qVIMWvZEFy9w8ZZpW9h9OB32l1rGtj7g==}
 
-  /next-sitemap@3.1.23(@next/env@15.0.3)(next@15.1.6):
+  /next-sitemap@3.1.23(@next/env@15.1.6)(next@15.1.6):
     resolution: {integrity: sha512-szQ5uvxn4/7P01U/rvzEccOcYk0Nm+kI3BGzHheREV+HDcj+IilrhXCuNqv4dBWy49eqsgCmjHuEDINx3/teMQ==}
     engines: {node: '>=14.18'}
     hasBin: true
@@ -10467,7 +10476,7 @@ packages:
       next: '*'
     dependencies:
       '@corex/deepmerge': 4.0.29
-      '@next/env': 15.0.3
+      '@next/env': 15.1.6
       minimist: 1.2.7
       next: 15.1.6(@babel/core@7.23.2)(@opentelemetry/api@1.9.0)(react-dom@18.3.1)(react@18.3.1)(sass@1.49.8)
     dev: false

@@ -44,6 +44,6 @@ yarn-error.log*
 .idea
 
 # env
-!.env.template
 .env
 .env.*
+!.env.template
