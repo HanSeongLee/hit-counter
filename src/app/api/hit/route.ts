@@ -9,11 +9,21 @@ export const GET = async (req: Request): Promise<NextResponse> => {
 
     const rawUrl = searchParams.get('url') || 'default';
     const rawCountBg = searchParams.get('count_bg') || '#4CAF50';
+    const rawTitleBg = searchParams.get('title_bg') || '#555';
     const rawTitle = searchParams.get('title') || 'hits';
+    const borderParam = searchParams.get('border');
 
     const url = sanitizeUrl(rawUrl);
     const countBg = sanitizeHexColor(rawCountBg) || '#4CAF50';
+    const titleBg = sanitizeHexColor(rawTitleBg) || '#555';
     const title = sanitizeText(rawTitle, 20);
+
+    const allowedBorders = ['square', 'round', 'none'] as const;
+    type BorderStyle = typeof allowedBorders[number];
+    const borderStyle: BorderStyle =
+        borderParam && allowedBorders.includes(borderParam as BorderStyle)
+            ? (borderParam as BorderStyle)
+            : 'round';
 
     const ip = req.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown';
     const ua = req.headers.get('user-agent') || 'unknown';
@@ -51,7 +61,9 @@ export const GET = async (req: Request): Promise<NextResponse> => {
     const svg = generateShieldsBadge(
         `${title}`,
         `${todayCount} / ${totalCount}`,
-        countBg
+        countBg,
+        borderStyle,
+        titleBg
     );
 
     return new NextResponse(svg, {

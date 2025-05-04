@@ -1,20 +1,34 @@
-export function generateShieldsBadge(label: string, message: string, color: string): string {
-    const charWidth = 7;
-    const labelWidth = Math.max(40, label.length * charWidth);
-    const messageWidth = Math.max(40, message.length * charWidth);
-    const totalWidth = labelWidth + messageWidth;
+export function generateShieldsBadge(
+  label: string,
+  message: string,
+  color: string,
+  borderStyle: 'square' | 'round' | 'none' = 'round',
+  labelBg: string = '#555'
+): string {
+  const charWidth = 7;
+  const labelWidth = Math.max(40, label.length * charWidth);
+  const messageWidth = Math.max(40, message.length * charWidth);
+  const totalWidth = labelWidth + messageWidth;
 
-    return `
+  const outerRx = borderStyle === 'round' ? 3 : 0;
+  const useMask = borderStyle !== 'none';
+
+  const maskTag = useMask
+    ? `<mask id="a">
+        <rect width="${totalWidth}" height="20" rx="${outerRx}" fill="#fff"/>
+      </mask>`
+    : '';
+  const maskAttr = useMask ? `mask="url(#a)"` : '';
+
+  return `
     <svg xmlns="http://www.w3.org/2000/svg" width="${totalWidth}" height="20">
       <linearGradient id="b" x2="0" y2="100%">
         <stop offset="0" stop-color="#bbb" stop-opacity=".1"/>
         <stop offset="1" stop-opacity=".1"/>
       </linearGradient>
-      <mask id="a">
-        <rect width="${totalWidth}" height="20" rx="3" fill="#fff"/>
-      </mask>
-      <g mask="url(#a)">
-        <rect width="${labelWidth}" height="20" fill="#555"/>
+      ${maskTag}
+      <g ${maskAttr}>
+        <rect width="${labelWidth}" height="20" fill="${labelBg}"/>
         <rect x="${labelWidth}" width="${messageWidth}" height="20" fill="${color}"/>
         <rect width="${totalWidth}" height="20" fill="url(#b)"/>
       </g>
