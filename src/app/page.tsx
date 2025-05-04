@@ -1,10 +1,10 @@
-import CustomComponent from '@/components/CustomComponent';
+import BadgeGenerator from '@/components/BadgeGenerator';
 
 export default function Home() {
     return (
         <>
             <main>
-                <CustomComponent />
+                <BadgeGenerator />
             </main>
         </>
     );
