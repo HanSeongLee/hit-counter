@@ -1,5 +1,22 @@
 # 🚦 CHANGELOG
 
+## 1.0.0 (2025-05-05)
+
+### ✨ Features
+
+* add BadgeGenerator component with customizable badge creation ([bbd5e24](https://github.com/HanSeongLee/hit-counter/commit/bbd5e240834ebaf9ae6fbe5569a3fda4d2878bd6))
+* add border style and label background to badge generation ([c17e0c7](https://github.com/HanSeongLee/hit-counter/commit/c17e0c7ff8803f1f65dba9217d1b984bb4558215))
+* **app/api:** add hit api ([b18bbae](https://github.com/HanSeongLee/hit-counter/commit/b18bbaec51b028fad0889f498d1153ade4b2251f))
+* **lib:** add badge generator ([c982375](https://github.com/HanSeongLee/hit-counter/commit/c982375666e0a2918f36b4c8f4f873095d039a9e))
+* **lib:** add hash utils ([ec60df9](https://github.com/HanSeongLee/hit-counter/commit/ec60df9b712a265f16ca7507ad62c2ae10134046))
+* **lib:** add sanitize utils ([34f25c5](https://github.com/HanSeongLee/hit-counter/commit/34f25c5a7f59742e892e995be47ae97fa1d7fe66))
+* update component on the Home page to BadgeGenerator ([151b9c4](https://github.com/HanSeongLee/hit-counter/commit/151b9c451d984b51e2b3e48ee54320c627bede16))
+
+### 📝 Docs
+
+* **README.md:** add banner image to README and include the file in docs ([c9cb2cc](https://github.com/HanSeongLee/hit-counter/commit/c9cb2ccd89e9ea6e41f3bffb11eb5797c2b4cec7))
+* **readme:** update README for hit counter project ([da69bd6](https://github.com/HanSeongLee/hit-counter/commit/da69bd692dc298ac024edc0457cdc84db1f9b8ac))
+
 ## [1.4.1](https://github.com/HanSeongLee/frontend-mentor-nextjs-ts-template/compare/v1.4.0...v1.4.1) (2025-01-27)
 
 ### 🐛 Bug Fixes
