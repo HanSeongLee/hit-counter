@@ -1,5 +1,7 @@
 # Hit Counter
 
+![HitCounter](/hit-counter-banner.png)
+
 [![hits](https://hits.devcomma.com/api/hit?url=https%3A%2F%2Fgithub.com%2FHanSeongLee%2Fhit-counter&title=hits&count_bg=%234CAF50)](https://hits.devcomma.com)
 
 ![Next.JS:v15.1.6](https://img.shields.io/badge/v15.1.6-575757?logo=next.js&label=Next.js&labelColor=000000)
