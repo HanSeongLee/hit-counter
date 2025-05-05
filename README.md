@@ -10,6 +10,8 @@
 ![Sass:v1.49.8](https://img.shields.io/badge/v1.49.8-575757?logo=sass&logoColor=FFFFFF&label=Sass&labelColor=CC6699)
 ![Storybook:v8.4.5](https://img.shields.io/badge/v8.4.5-575757?logo=sass&logoColor=FFFFFF&label=Storybook&labelColor=FF4785)
 
+[![Chromatic](https://img.shields.io/badge/Chromatic-575757?logo=storybook&label=Chromatic&labelColor=F6F9FC)](https://main--6818402d2e28b5a90aedfd3e.chromatic.com/)
+
 This project is a **Hit Counter**, inspired by the need for a simple, customizable visitor badge for websites and repositories.
 
 ## Why was this made?
