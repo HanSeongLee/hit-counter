@@ -1,6 +1,6 @@
 # Hit Counter
 
-![HitCounter](/hit-counter-banner.png)
+![HitCounter](./docs/hit-counter-banner.png)
 
 [![hits](https://hits.devcomma.com/api/hit?url=https%3A%2F%2Fgithub.com%2FHanSeongLee%2Fhit-counter&title=hits&count_bg=%234CAF50)](https://hits.devcomma.com)
 
