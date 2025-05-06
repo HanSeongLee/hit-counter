@@ -81,171 +81,176 @@ const BadgeGenerator: React.FC<BadgeGeneratorProps> = ({ className }) => {
   const urlError = url && !isValidUrl(url) ? 'Please enter a valid URL' : '';
 
   return (
-    <div className={`${styles.container} ${className}`}>
-      <h1 className={styles.title}>Badge Generator</h1>
-
-      {/* URL Input */}
-      <div className={styles.formGroup}>
-        <label htmlFor="url" className={styles.label}>
-          Target URL
-        </label>
-        <input
-          type="text"
-          id="url"
-          value={url}
-          onChange={(e) => setUrl(e.target.value)}
-          placeholder="https://github.com/username/repo"
-          className={styles.input}
-        />
-        {urlError && <p className={styles.error}>{urlError}</p>}
-      </div>
-
-      {/* Customization Options */}
-      <div className={styles.grid}>
-        {/* Border Style */}
-        <div>
-          <label htmlFor="border" className={styles.label}>
-            Border Style
-          </label>
-          <select
-            id="border"
-            value={border}
-            onChange={(e) => setBorder(e.target.value as 'ROUND' | 'SQUARE' | 'NONE')}
-            className={styles.input}
-          >
-            <option value="ROUND">Round</option>
-            <option value="SQUARE">Square</option>
-            <option value="NONE">None</option>
-          </select>
+      <div className={`${styles.container} ${className}`}>
+        <div className={styles.header}>
+          <h1 className={styles.title}>Badge Generator</h1>
+          <a href={BASE_URL}>
+            <img src={`${BASE_URL}/api/hit?url=${BASE_URL}&title=hits&count_bg=%234CAF50`} />
+          </a>
         </div>
 
-        {/* Title */}
-        <div>
-          <label htmlFor="title" className={styles.label}>
-            Title
+        {/* URL Input */}
+        <div className={styles.formGroup}>
+          <label htmlFor="url" className={styles.label}>
+            Target URL
           </label>
           <input
-            type="text"
-            id="title"
-            value={title}
-            onChange={(e) => setTitle(e.target.value)}
-            placeholder="hits"
-            className={styles.input}
+              type="text"
+              id="url"
+              value={url}
+              onChange={(e) => setUrl(e.target.value)}
+              placeholder="https://github.com/username/repo"
+              className={styles.input}
           />
+          {urlError && <p className={styles.error}>{urlError}</p>}
         </div>
 
-        {/* Title Background Color */}
-        <div>
-          <label htmlFor="titleBgColor" className={styles.label}>
-            Title Background Color
-          </label>
-          <div className={styles.flexRow}>
+        {/* Customization Options */}
+        <div className={styles.grid}>
+          {/* Border Style */}
+          <div>
+            <label htmlFor="border" className={styles.label}>
+              Border Style
+            </label>
+            <select
+                id="border"
+                value={border}
+                onChange={(e) => setBorder(e.target.value as 'ROUND' | 'SQUARE' | 'NONE')}
+                className={styles.input}
+            >
+              <option value="ROUND">Round</option>
+              <option value="SQUARE">Square</option>
+              <option value="NONE">None</option>
+            </select>
+          </div>
+
+          {/* Title */}
+          <div>
+            <label htmlFor="title" className={styles.label}>
+              Title
+            </label>
             <input
-              type="text"
-              id="titleBgColor"
-              value={titleBgColor}
-              onChange={(e) => setTitleBgColor(e.target.value)}
-              className={styles.inputWithColor}
-            />
-            <input
-              type="color"
-              value={titleBgColor}
-              onChange={(e) => setTitleBgColor(e.target.value)}
-              className={styles.colorPicker}
+                type="text"
+                id="title"
+                value={title}
+                onChange={(e) => setTitle(e.target.value)}
+                placeholder="hits"
+                className={styles.input}
             />
           </div>
-        </div>
 
-        {/* Count Background Color */}
-        <div>
-          <label htmlFor="countBgColor" className={styles.label}>
-            Count Background Color
-          </label>
-          <div className={styles.flexRow}>
-            <input
-              type="text"
-              id="countBgColor"
-              value={countBgColor}
-              onChange={(e) => setCountBgColor(e.target.value)}
-              className={styles.inputWithColor}
-            />
-            <input
-              type="color"
-              value={countBgColor}
-              onChange={(e) => setCountBgColor(e.target.value)}
-              className={styles.colorPicker}
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Badge Preview */}
-      <div className={styles.previewContainer}>
-        <h2 className={styles.previewTitle}>Badge Preview</h2>
-        <div className={styles.previewBox}>
-          {badgeUrl ? (
-            <img src={badgeUrl} alt="Badge Preview" />
-          ) : (
-            <p className={styles.previewPlaceholder}>Enter a valid URL to see the badge preview</p>
-          )}
-        </div>
-      </div>
-
-      {/* Generated Code */}
-      {badgeUrl && (
-        <div className={styles.codeSection}>
-          <h2 className={styles.codeTitle}>Generated Code</h2>
-
-          {/* Markdown */}
-          <div className={styles.codeBlock}>
-            <div className={styles.codeHeader}>
-              <h3 className={styles.codeType}>Markdown</h3>
-              <button
-                onClick={() => copyToClipboard(markdownCode, 'markdown')}
-                className={styles.copyButton}
-              >
-                {copyFeedback.markdown ? '✅ Copied' : 'Copy'}
-              </button>
+          {/* Title Background Color */}
+          <div>
+            <label htmlFor="titleBgColor" className={styles.label}>
+              Title Background Color
+            </label>
+            <div className={styles.flexRow}>
+              <input
+                  type="text"
+                  id="titleBgColor"
+                  value={titleBgColor}
+                  onChange={(e) => setTitleBgColor(e.target.value)}
+                  className={styles.inputWithColor}
+              />
+              <input
+                  type="color"
+                  value={titleBgColor}
+                  onChange={(e) => setTitleBgColor(e.target.value)}
+                  className={styles.colorPicker}
+              />
             </div>
-            <pre className={styles.pre}>
+          </div>
+
+          {/* Count Background Color */}
+          <div>
+            <label htmlFor="countBgColor" className={styles.label}>
+              Count Background Color
+            </label>
+            <div className={styles.flexRow}>
+              <input
+                  type="text"
+                  id="countBgColor"
+                  value={countBgColor}
+                  onChange={(e) => setCountBgColor(e.target.value)}
+                  className={styles.inputWithColor}
+              />
+              <input
+                  type="color"
+                  value={countBgColor}
+                  onChange={(e) => setCountBgColor(e.target.value)}
+                  className={styles.colorPicker}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Badge Preview */}
+        <div className={styles.previewContainer}>
+          <h2 className={styles.previewTitle}>Badge Preview</h2>
+          <div className={styles.previewBox}>
+            {badgeUrl ? (
+                <img src={badgeUrl} alt="Badge Preview" />
+            ) : (
+                <p className={styles.previewPlaceholder}>Enter a valid URL to see the badge preview</p>
+            )}
+          </div>
+        </div>
+
+        {/* Generated Code */}
+        {badgeUrl && (
+            <div className={styles.codeSection}>
+              <h2 className={styles.codeTitle}>Generated Code</h2>
+
+              {/* Markdown */}
+              <div className={styles.codeBlock}>
+                <div className={styles.codeHeader}>
+                  <h3 className={styles.codeType}>Markdown</h3>
+                  <button
+                      onClick={() => copyToClipboard(markdownCode, 'markdown')}
+                      className={styles.copyButton}
+                  >
+                    {copyFeedback.markdown ? '✅ Copied' : 'Copy'}
+                  </button>
+                </div>
+                <pre className={styles.pre}>
               {markdownCode}
             </pre>
-          </div>
+              </div>
 
-          {/* HTML */}
-          <div className={styles.codeBlock}>
-            <div className={styles.codeHeader}>
-              <h3 className={styles.codeType}>HTML</h3>
-              <button
-                onClick={() => copyToClipboard(htmlCode, 'html')}
-                className={styles.copyButton}
-              >
-                {copyFeedback.html ? '✅ Copied' : 'Copy'}
-              </button>
-            </div>
-            <pre className={styles.pre}>
+              {/* HTML */}
+              <div className={styles.codeBlock}>
+                <div className={styles.codeHeader}>
+                  <h3 className={styles.codeType}>HTML</h3>
+                  <button
+                      onClick={() => copyToClipboard(htmlCode, 'html')}
+                      className={styles.copyButton}
+                  >
+                    {copyFeedback.html ? '✅ Copied' : 'Copy'}
+                  </button>
+                </div>
+                <pre className={styles.pre}>
               {htmlCode}
             </pre>
-          </div>
+              </div>
 
-          {/* URL */}
-          <div className={styles.codeBlock}>
-            <div className={styles.codeHeader}>
-              <h3 className={styles.codeType}>Embed URL</h3>
-              <button
-                onClick={() => copyToClipboard(badgeUrl, 'url')}
-                className={styles.copyButton}
-              >
-                {copyFeedback.url ? '✅ Copied' : 'Copy'}
-              </button>
-            </div>
-            <pre className={styles.pre}>
+              {/* URL */}
+              <div className={styles.codeBlock}>
+                <div className={styles.codeHeader}>
+                  <h3 className={styles.codeType}>Embed URL</h3>
+                  <button
+                      onClick={() => copyToClipboard(badgeUrl, 'url')}
+                      className={styles.copyButton}
+                  >
+                    {copyFeedback.url ? '✅ Copied' : 'Copy'}
+                  </button>
+                </div>
+                <pre className={styles.pre}>
               {badgeUrl}
             </pre>
-          </div>
-        </div>
-      )}
-    </div>
+              </div>
+            </div>
+        )}
+      </div>
   );
 };
 
