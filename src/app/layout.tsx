@@ -1,6 +1,7 @@
 import React from 'react';
 import { Metadata, Viewport } from 'next';
 import { WEBSITE_DESCRIPTION, WEBSITE_OGI, WEBSITE_THEME_COLOR, WEBSITE_TITLE, WEBSITE_URL } from '@/constants/website';
+import '@/styles/globals.scss';
 
 export const metadata: Metadata = {
     title: WEBSITE_TITLE,
