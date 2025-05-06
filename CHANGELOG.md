@@ -1,5 +1,20 @@
 # 🚦 CHANGELOG
 
+## [1.1.0](https://github.com/HanSeongLee/hit-counter/compare/v1.0.0...v1.1.0) (2025-05-06)
+
+### ✨ Features
+
+* add header section with external link and badge image ([8def0b9](https://github.com/HanSeongLee/hit-counter/commit/8def0b9164d051dc8c65af672769f0927713bf29))
+
+### 🐛 Bug Fixes
+
+* remove redundant CSS rules and fix missing global styles import ([3bf4d29](https://github.com/HanSeongLee/hit-counter/commit/3bf4d2961e4988aaabe7b193af2194f0e04320f2))
+
+### 📝 Docs
+
+* **README.md:** add Chromatic badge to README ([23b9786](https://github.com/HanSeongLee/hit-counter/commit/23b9786897d4ed14f7d0b73031aa834fd8545f64))
+* **README.md:** Update image path in README.md ([af99085](https://github.com/HanSeongLee/hit-counter/commit/af99085ce8071526d5db7904d6dfbcb6e1b46c86))
+
 ## 1.0.0 (2025-05-05)
 
 ### ✨ Features
