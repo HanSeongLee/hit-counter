@@ -1,5 +1,15 @@
 # 🚦 CHANGELOG
 
+## [1.2.0](https://github.com/HanSeongLee/hit-counter/compare/v1.1.0...v1.2.0) (2025-05-07)
+
+### ✨ Features
+
+* add ShieldsBadge component with Storybook stories ([77c3b09](https://github.com/HanSeongLee/hit-counter/commit/77c3b09bda745dddf46c19ab7b5098f8725d3e71))
+
+### 🐛 Bug Fixes
+
+* **lib/badge:** add unique suffix to SVG IDs in badge generator ([fa2a6a2](https://github.com/HanSeongLee/hit-counter/commit/fa2a6a27c8363479a879ea05d71a76aa810ca67c))
+
 ## [1.1.0](https://github.com/HanSeongLee/hit-counter/compare/v1.0.0...v1.1.0) (2025-05-06)
 
 ### ✨ Features
