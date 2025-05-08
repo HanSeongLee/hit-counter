@@ -11,11 +11,16 @@ export const GET = async (req: Request): Promise<NextResponse> => {
     const rawCountBg = searchParams.get('count_bg') || '#4CAF50';
     const rawTitleBg = searchParams.get('title_bg') || '#555';
     const rawTitle = searchParams.get('title') || 'hits';
+    const rawTitleColor = searchParams.get('title_color') || '#FFFFFF';
+    const rawCountColor = searchParams.get('count_color') || '#FFFFFF';
     const borderParam = searchParams.get('border');
+    const displayParam = searchParams.get('display');
 
     const url = sanitizeUrl(rawUrl);
     const countBg = sanitizeHexColor(rawCountBg) || '#4CAF50';
     const titleBg = sanitizeHexColor(rawTitleBg) || '#555';
+    const titleColor = sanitizeHexColor(rawTitleColor) || '#FFFFFF';
+    const countColor = sanitizeHexColor(rawCountColor) || '#FFFFFF';
     const title = sanitizeText(rawTitle, 20);
 
     const allowedBorders = ['square', 'round', 'none'] as const;
@@ -24,6 +29,13 @@ export const GET = async (req: Request): Promise<NextResponse> => {
         borderParam && allowedBorders.includes(borderParam as BorderStyle)
             ? (borderParam as BorderStyle)
             : 'round';
+
+    const allowedDisplayModes = ['total', 'daily', 'both'] as const;
+    type DisplayMode = typeof allowedDisplayModes[number];
+    const displayMode: DisplayMode =
+        displayParam && allowedDisplayModes.includes(displayParam as DisplayMode)
+            ? (displayParam as DisplayMode)
+            : 'both';
 
     const ip = req.headers.get('x-forwarded-for')?.split(',')[0] || 'unknown';
     const ua = req.headers.get('user-agent') || 'unknown';
@@ -58,12 +70,30 @@ export const GET = async (req: Request): Promise<NextResponse> => {
         return new NextResponse('Internal Server Error', { status: 500 });
     }
 
+    // Format message based on display mode
+    let message: string;
+    switch (displayMode) {
+        case 'total':
+            message = `${totalCount}`;
+            break;
+        case 'daily':
+            message = `${todayCount}`;
+            break;
+        case 'both':
+        default:
+            message = `${todayCount} / ${totalCount}`;
+            break;
+    }
+
     const svg = generateShieldsBadge(
         `${title}`,
-        `${todayCount} / ${totalCount}`,
+        message,
         countBg,
         borderStyle,
-        titleBg
+        titleBg,
+        undefined, // Use default idSuffix
+        titleColor,
+        countColor
     );
 
     return new NextResponse(svg, {

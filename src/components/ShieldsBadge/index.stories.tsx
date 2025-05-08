@@ -45,3 +45,52 @@ export const NoneBorder: Story = {
         borderStyle: 'none',
     },
 };
+
+export const WithCustomLabelColor: Story = {
+    render: (args) => <ShieldsBadge {...args} />,
+    args: {
+        label: 'Issues',
+        message: '20 Open',
+        color: '#FF5722',
+        labelBg: '#303F9F',
+        borderStyle: 'round',
+        labelColor: '#FFEB3B', // Custom label text color
+    },
+};
+
+export const WithCustomMessageColor: Story = {
+    render: (args) => <ShieldsBadge {...args} />,
+    args: {
+        label: 'Forks',
+        message: '50 Total',
+        color: '#4CAF50',
+        labelBg: '#512DA8',
+        borderStyle: 'square',
+        messageColor: '#FFFFFF', // Custom message text color
+    },
+};
+
+export const AllBorderStyles: Story = {
+    render: (args) => (
+        <div style={{ display: 'grid', gap: '20px' }}>
+            <ShieldsBadge {...args} label="Square" message="50 / 500" borderStyle="square" />
+            <ShieldsBadge {...args} label="Round" message="30 / 300" borderStyle="round" />
+            <ShieldsBadge {...args} label="None" message="100 / 1000" borderStyle="none" />
+        </div>
+    ),
+    args: {
+        color: '#FF9800',
+        labelBg: '#424242',
+    },
+};
+
+export const LongText: Story = {
+    render: (args) => <ShieldsBadge {...args} />,
+    args: {
+        label: 'Weekly Downloads',
+        message: '50,000 / 500,000',
+        color: '#673AB7',
+        labelBg: '#000',
+        borderStyle: 'round',
+    },
+};

@@ -14,6 +14,9 @@ const BadgeGenerator: React.FC<BadgeGeneratorProps> = ({ className }) => {
   const [border, setBorder] = useState<'ROUND' | 'SQUARE' | 'NONE'>('ROUND');
   const [titleBgColor, setTitleBgColor] = useState<string>('#555555');
   const [countBgColor, setCountBgColor] = useState<string>('#4CAF50');
+  const [displayMode, setDisplayMode] = useState<'BOTH' | 'TOTAL' | 'DAILY'>('BOTH');
+  const [titleTextColor, setTitleTextColor] = useState<string>('#FFFFFF');
+  const [countTextColor, setCountTextColor] = useState<string>('#FFFFFF');
 
   const BASE_URL = process.env.NEXT_PUBLIC_URL || 'https://hits.devcomma.com';
 
@@ -45,6 +48,18 @@ const BadgeGenerator: React.FC<BadgeGeneratorProps> = ({ className }) => {
 
     if (titleBgColor !== '#555555') {
       badgeUrl += `&title_bg=${encodeURIComponent(titleBgColor)}`;
+    }
+
+    if (displayMode !== 'BOTH') {
+      badgeUrl += `&display=${displayMode.toLowerCase()}`;
+    }
+
+    if (titleTextColor !== '#FFFFFF') {
+      badgeUrl += `&title_color=${encodeURIComponent(titleTextColor)}`;
+    }
+
+    if (countTextColor !== '#FFFFFF') {
+      badgeUrl += `&count_color=${encodeURIComponent(countTextColor)}`;
     }
 
     return badgeUrl;
@@ -124,6 +139,23 @@ const BadgeGenerator: React.FC<BadgeGeneratorProps> = ({ className }) => {
             </select>
           </div>
 
+          {/* Display Mode */}
+          <div>
+            <label htmlFor="displayMode" className={styles.label}>
+              Display Mode
+            </label>
+            <select
+                id="displayMode"
+                value={displayMode}
+                onChange={(e) => setDisplayMode(e.target.value as 'BOTH' | 'TOTAL' | 'DAILY')}
+                className={styles.input}
+            >
+              <option value="BOTH">Daily / Total</option>
+              <option value="TOTAL">Total Only</option>
+              <option value="DAILY">Daily Only</option>
+            </select>
+          </div>
+
           {/* Title */}
           <div>
             <label htmlFor="title" className={styles.label}>
@@ -161,6 +193,28 @@ const BadgeGenerator: React.FC<BadgeGeneratorProps> = ({ className }) => {
             </div>
           </div>
 
+          {/* Title Text Color */}
+          <div>
+            <label htmlFor="titleTextColor" className={styles.label}>
+              Title Text Color
+            </label>
+            <div className={styles.flexRow}>
+              <input
+                  type="text"
+                  id="titleTextColor"
+                  value={titleTextColor}
+                  onChange={(e) => setTitleTextColor(e.target.value)}
+                  className={styles.inputWithColor}
+              />
+              <input
+                  type="color"
+                  value={titleTextColor}
+                  onChange={(e) => setTitleTextColor(e.target.value)}
+                  className={styles.colorPicker}
+              />
+            </div>
+          </div>
+
           {/* Count Background Color */}
           <div>
             <label htmlFor="countBgColor" className={styles.label}>
@@ -178,6 +232,28 @@ const BadgeGenerator: React.FC<BadgeGeneratorProps> = ({ className }) => {
                   type="color"
                   value={countBgColor}
                   onChange={(e) => setCountBgColor(e.target.value)}
+                  className={styles.colorPicker}
+              />
+            </div>
+          </div>
+
+          {/* Count Text Color */}
+          <div>
+            <label htmlFor="countTextColor" className={styles.label}>
+              Count Text Color
+            </label>
+            <div className={styles.flexRow}>
+              <input
+                  type="text"
+                  id="countTextColor"
+                  value={countTextColor}
+                  onChange={(e) => setCountTextColor(e.target.value)}
+                  className={styles.inputWithColor}
+              />
+              <input
+                  type="color"
+                  value={countTextColor}
+                  onChange={(e) => setCountTextColor(e.target.value)}
                   className={styles.colorPicker}
               />
             </div>

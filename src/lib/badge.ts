@@ -4,7 +4,9 @@ export function generateShieldsBadge(
   color: string,
   borderStyle: 'square' | 'round' | 'none' = 'round',
   labelBg: string = '#555',
-  idSuffix: string = Math.random().toString(36).substring(2, 8)
+  idSuffix: string = Math.random().toString(36).substring(2, 8),
+  labelColor: string = '#FFFFFF',
+  messageColor: string = '#FFFFFF'
 ): string {
   const charWidth = 7;
   const labelWidth = Math.max(40, label.length * charWidth);
@@ -36,13 +38,13 @@ export function generateShieldsBadge(
         <rect x="${labelWidth}" width="${messageWidth}" height="20" fill="${color}"/>
         <rect width="${totalWidth}" height="20" fill="url(#${gradientId})"/>
       </g>
-      <g fill="#fff" text-anchor="middle"
+      <g text-anchor="middle"
          font-family="DejaVu Sans,Verdana,Geneva,sans-serif"
          font-size="11">
         <text x="${labelWidth / 2}" y="15" fill="#010101" fill-opacity=".3">${label}</text>
-        <text x="${labelWidth / 2}" y="14">${label}</text>
+        <text x="${labelWidth / 2}" y="14" fill="${labelColor}">${label}</text>
         <text x="${labelWidth + messageWidth / 2}" y="15" fill="#010101" fill-opacity=".3">${message}</text>
-        <text x="${labelWidth + messageWidth / 2}" y="14">${message}</text>
+        <text x="${labelWidth + messageWidth / 2}" y="14" fill="${messageColor}">${message}</text>
       </g>
     </svg>
   `;
