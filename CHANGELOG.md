@@ -1,5 +1,11 @@
 # 🚦 CHANGELOG
 
+## [1.3.0](https://github.com/HanSeongLee/hit-counter/compare/v1.2.0...v1.3.0) (2025-05-08)
+
+### ✨ Features
+
+* enhance ShieldsBadge with customizable label and message colors, and add display mode options ([75046a3](https://github.com/HanSeongLee/hit-counter/commit/75046a35d42d5a77d818aa8abca7eb4eefa733dd))
+
 ## [1.2.0](https://github.com/HanSeongLee/hit-counter/compare/v1.1.0...v1.2.0) (2025-05-07)
 
 ### ✨ Features
