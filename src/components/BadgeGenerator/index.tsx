@@ -1,7 +1,18 @@
 'use client';
 
 import React, { useState } from 'react';
-import styles from './styles.module.scss';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { Button } from '@/components/ui/button';
+import {
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select';
 
 interface BadgeGeneratorProps {
   className?: string;
@@ -96,233 +107,252 @@ const BadgeGenerator: React.FC<BadgeGeneratorProps> = ({ className }) => {
   const urlError = url && !isValidUrl(url) ? 'Please enter a valid URL' : '';
 
   return (
-      <div className={`${styles.container} ${className}`}>
-        <div className={styles.header}>
-          <h1 className={styles.title}>Badge Generator</h1>
+      <div className={`p-6 max-w-4xl mx-auto ${className}`}>
+        <div className="mb-6">
+          <h1 className="text-2xl font-bold mb-2">Badge Generator</h1>
           <a href={BASE_URL}>
             <img src={`${BASE_URL}/api/hit?url=${BASE_URL}&title=hits&count_bg=%234CAF50`} />
           </a>
         </div>
 
         {/* URL Input */}
-        <div className={styles.formGroup}>
-          <label htmlFor="url" className={styles.label}>
+        <div className="grid w-full items-center gap-2 mb-6">
+          <Label htmlFor="url">
             Target URL
-          </label>
-          <input
-              type="text"
-              id="url"
-              value={url}
-              onChange={(e) => setUrl(e.target.value)}
-              placeholder="https://github.com/username/repo"
-              className={styles.input}
+          </Label>
+          <Input type="text"
+                 id="url"
+                 value={url}
+                 onChange={(e) => setUrl(e.target.value)}
+                 placeholder="https://github.com/username/repo"
           />
-          {urlError && <p className={styles.error}>{urlError}</p>}
+          {urlError && <p className="text-red-500 text-sm mt-1">{urlError}</p>}
         </div>
 
         {/* Customization Options */}
-        <div className={styles.grid}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
           {/* Border Style */}
-          <div>
-            <label htmlFor="border" className={styles.label}>
+          <div className="grid w-full items-center gap-2">
+            <Label htmlFor="border-select">
               Border Style
-            </label>
-            <select
-                id="border"
-                value={border}
-                onChange={(e) => setBorder(e.target.value as 'ROUND' | 'SQUARE' | 'NONE')}
-                className={styles.input}
-            >
-              <option value="ROUND">Round</option>
-              <option value="SQUARE">Square</option>
-              <option value="NONE">None</option>
-            </select>
+            </Label>
+            <Select value={border} onValueChange={(value) => setBorder(value as 'ROUND' | 'SQUARE' | 'NONE')}>
+              <SelectTrigger id="border-select" className="w-full">
+                <SelectValue placeholder="Border Style" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Border Style</SelectLabel>
+                  <SelectItem value="ROUND">Round</SelectItem>
+                  <SelectItem value="SQUARE">Square</SelectItem>
+                  <SelectItem value="NONE">None</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
           </div>
 
           {/* Display Mode */}
-          <div>
-            <label htmlFor="displayMode" className={styles.label}>
+          <div className="grid w-full items-center gap-2">
+            <Label htmlFor="display-mode-select">
               Display Mode
-            </label>
-            <select
-                id="displayMode"
-                value={displayMode}
-                onChange={(e) => setDisplayMode(e.target.value as 'BOTH' | 'TOTAL' | 'DAILY')}
-                className={styles.input}
+            </Label>
+            <Select value={displayMode}
+                    onValueChange={(value) => setDisplayMode(value as 'BOTH' | 'TOTAL' | 'DAILY')}
             >
-              <option value="BOTH">Daily / Total</option>
-              <option value="TOTAL">Total Only</option>
-              <option value="DAILY">Daily Only</option>
-            </select>
+              <SelectTrigger id="display-mode-select" className="w-full">
+                <SelectValue placeholder="Display Mode" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  <SelectLabel>Display Mode</SelectLabel>
+                  <SelectItem value="BOTH">Daily / Total</SelectItem>
+                  <SelectItem value="TOTAL">Total Only</SelectItem>
+                  <SelectItem value="DAILY">Daily Only</SelectItem>
+                </SelectGroup>
+              </SelectContent>
+            </Select>
           </div>
 
           {/* Title */}
-          <div>
-            <label htmlFor="title" className={styles.label}>
+          <div className="grid w-full items-center gap-2">
+            <Label htmlFor="title">
               Title
-            </label>
-            <input
-                type="text"
-                id="title"
-                value={title}
-                onChange={(e) => setTitle(e.target.value)}
-                placeholder="hits"
-                className={styles.input}
+            </Label>
+            <Input type="text"
+                   id="title"
+                   value={title}
+                   onChange={(e) => setTitle(e.target.value)}
+                   placeholder="hits"
             />
           </div>
 
           {/* Title Background Color */}
-          <div>
-            <label htmlFor="titleBgColor" className={styles.label}>
+          <div className="grid w-full items-center gap-2">
+            <Label htmlFor="titleBgColor">
               Title Background Color
-            </label>
-            <div className={styles.flexRow}>
-              <input
-                  type="text"
-                  id="titleBgColor"
-                  value={titleBgColor}
-                  onChange={(e) => setTitleBgColor(e.target.value)}
-                  className={styles.inputWithColor}
+            </Label>
+            <div className="flex">
+              <Input
+                type="text"
+                id="titleBgColor"
+                value={titleBgColor}
+                onChange={(e) => setTitleBgColor(e.target.value)}
+                className="rounded-r-none"
               />
-              <input
+              <div className="flex items-center justify-center h-9 w-9 border border-input border-l-0 rounded-r-md bg-background overflow-hidden">
+                <input
                   type="color"
                   value={titleBgColor}
                   onChange={(e) => setTitleBgColor(e.target.value)}
-                  className={styles.colorPicker}
-              />
+                  className="h-9 w-9"
+                  aria-labelledby="titleBgColor"
+                />
+              </div>
             </div>
           </div>
 
           {/* Title Text Color */}
-          <div>
-            <label htmlFor="titleTextColor" className={styles.label}>
+          <div className="grid w-full items-center gap-2">
+            <Label htmlFor="titleTextColor">
               Title Text Color
-            </label>
-            <div className={styles.flexRow}>
-              <input
-                  type="text"
-                  id="titleTextColor"
-                  value={titleTextColor}
-                  onChange={(e) => setTitleTextColor(e.target.value)}
-                  className={styles.inputWithColor}
+            </Label>
+            <div className="flex">
+              <Input
+                type="text"
+                id="titleTextColor"
+                value={titleTextColor}
+                onChange={(e) => setTitleTextColor(e.target.value)}
+                className="rounded-r-none"
               />
-              <input
+              <div className="flex items-center justify-center h-9 w-9 border border-input border-l-0 rounded-r-md bg-background overflow-hidden">
+                <input
                   type="color"
                   value={titleTextColor}
                   onChange={(e) => setTitleTextColor(e.target.value)}
-                  className={styles.colorPicker}
-              />
+                  className="h-9 w-9"
+                  aria-labelledby="titleTextColor"
+                />
+              </div>
             </div>
           </div>
 
           {/* Count Background Color */}
-          <div>
-            <label htmlFor="countBgColor" className={styles.label}>
+          <div className="grid w-full items-center gap-2">
+            <Label htmlFor="countBgColor">
               Count Background Color
-            </label>
-            <div className={styles.flexRow}>
-              <input
-                  type="text"
-                  id="countBgColor"
-                  value={countBgColor}
-                  onChange={(e) => setCountBgColor(e.target.value)}
-                  className={styles.inputWithColor}
+            </Label>
+            <div className="flex">
+              <Input
+                type="text"
+                id="countBgColor"
+                value={countBgColor}
+                onChange={(e) => setCountBgColor(e.target.value)}
+                className="rounded-r-none"
               />
-              <input
+              <div className="flex items-center justify-center h-9 w-9 border border-input border-l-0 rounded-r-md bg-background overflow-hidden">
+                <input
                   type="color"
                   value={countBgColor}
                   onChange={(e) => setCountBgColor(e.target.value)}
-                  className={styles.colorPicker}
-              />
+                  className="h-9 w-9"
+                  aria-labelledby="countBgColor"
+                />
+              </div>
             </div>
           </div>
 
           {/* Count Text Color */}
-          <div>
-            <label htmlFor="countTextColor" className={styles.label}>
+          <div className="grid w-full items-center gap-2">
+            <Label htmlFor="countTextColor">
               Count Text Color
-            </label>
-            <div className={styles.flexRow}>
-              <input
-                  type="text"
-                  id="countTextColor"
-                  value={countTextColor}
-                  onChange={(e) => setCountTextColor(e.target.value)}
-                  className={styles.inputWithColor}
+            </Label>
+            <div className="flex">
+              <Input
+                type="text"
+                id="countTextColor"
+                value={countTextColor}
+                onChange={(e) => setCountTextColor(e.target.value)}
+                className="rounded-r-none"
               />
-              <input
+              <div className="flex items-center justify-center h-9 w-9 border border-input border-l-0 rounded-r-md bg-background overflow-hidden">
+                <input
                   type="color"
                   value={countTextColor}
                   onChange={(e) => setCountTextColor(e.target.value)}
-                  className={styles.colorPicker}
-              />
+                  className="w-9 h-9"
+                  aria-labelledby="countTextColor"
+                />
+              </div>
             </div>
           </div>
         </div>
 
         {/* Badge Preview */}
-        <div className={styles.previewContainer}>
-          <h2 className={styles.previewTitle}>Badge Preview</h2>
-          <div className={styles.previewBox}>
+        <div className="mb-6">
+          <h2 className="text-lg font-semibold mb-2">Badge Preview</h2>
+          <div className="p-4 border border-gray-200 rounded-md bg-gray-50 flex items-center justify-center">
             {badgeUrl ? (
                 <img src={badgeUrl} alt="Badge Preview" />
             ) : (
-                <p className={styles.previewPlaceholder}>Enter a valid URL to see the badge preview</p>
+                <p className="text-gray-500">Enter a valid URL to see the badge preview</p>
             )}
           </div>
         </div>
 
         {/* Generated Code */}
         {badgeUrl && (
-            <div className={styles.codeSection}>
-              <h2 className={styles.codeTitle}>Generated Code</h2>
+            <div className="mt-4">
+              <h2 className="text-lg font-semibold">Generated Code</h2>
 
               {/* Markdown */}
-              <div className={styles.codeBlock}>
-                <div className={styles.codeHeader}>
-                  <h3 className={styles.codeType}>Markdown</h3>
-                  <button
+              <div className="mt-4">
+                <div className="flex justify-between items-center mb-1">
+                  <h3 className="font-medium">Markdown</h3>
+                  <Button
+                      variant="default"
+                      size="sm"
                       onClick={() => copyToClipboard(markdownCode, 'markdown')}
-                      className={styles.copyButton}
                   >
                     {copyFeedback.markdown ? '✅ Copied' : 'Copy'}
-                  </button>
+                  </Button>
                 </div>
-                <pre className={styles.pre}>
-              {markdownCode}
-            </pre>
+                <pre className="p-3 bg-gray-100 rounded-md overflow-x-auto whitespace-pre-wrap break-all">
+                  {markdownCode}
+                </pre>
               </div>
 
               {/* HTML */}
-              <div className={styles.codeBlock}>
-                <div className={styles.codeHeader}>
-                  <h3 className={styles.codeType}>HTML</h3>
-                  <button
+              <div className="mt-4">
+                <div className="flex justify-between items-center mb-1">
+                  <h3 className="font-medium">HTML</h3>
+                  <Button
+                      variant="default"
+                      size="sm"
                       onClick={() => copyToClipboard(htmlCode, 'html')}
-                      className={styles.copyButton}
                   >
                     {copyFeedback.html ? '✅ Copied' : 'Copy'}
-                  </button>
+                  </Button>
                 </div>
-                <pre className={styles.pre}>
-              {htmlCode}
-            </pre>
+                <pre className="p-3 bg-gray-100 rounded-md overflow-x-auto whitespace-pre-wrap break-all">
+                  {htmlCode}
+                </pre>
               </div>
 
               {/* URL */}
-              <div className={styles.codeBlock}>
-                <div className={styles.codeHeader}>
-                  <h3 className={styles.codeType}>Embed URL</h3>
-                  <button
+              <div className="mt-4">
+                <div className="flex justify-between items-center mb-1">
+                  <h3 className="font-medium">Embed URL</h3>
+                  <Button
+                      variant="default"
+                      size="sm"
                       onClick={() => copyToClipboard(badgeUrl, 'url')}
-                      className={styles.copyButton}
                   >
                     {copyFeedback.url ? '✅ Copied' : 'Copy'}
-                  </button>
+                  </Button>
                 </div>
-                <pre className={styles.pre}>
-              {badgeUrl}
-            </pre>
+                <pre className="p-3 bg-gray-100 rounded-md overflow-x-auto whitespace-pre-wrap break-all">
+                  {badgeUrl}
+                </pre>
               </div>
             </div>
         )}
