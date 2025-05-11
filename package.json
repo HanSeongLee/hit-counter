@@ -19,6 +19,7 @@
     "generate-color-style-sheet": "tsc ./generateColorStyleSheet.ts && node ./generateColorStyleSheet.js"
   },
   "dependencies": {
+    "@radix-ui/react-label": "^2.1.6",
     "@semantic-release/github": "^9.2.3",
     "@sentry/nextjs": "^8.47.0",
     "@svgr/webpack": "^6.2.1",
