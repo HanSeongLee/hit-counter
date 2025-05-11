@@ -1,5 +1,17 @@
 # 🚦 CHANGELOG
 
+## [1.4.0](https://github.com/HanSeongLee/hit-counter/compare/v1.3.0...v1.4.0) (2025-05-11)
+
+### ✨ Features
+
+* add Form and Button components ([1614df4](https://github.com/HanSeongLee/hit-counter/commit/1614df42268f336a32e5685a1902a272235525f1))
+* add Input component ([3de45fc](https://github.com/HanSeongLee/hit-counter/commit/3de45fcf8d25269e9aeee0231013e32cf2b2fd26))
+* add Label component ([8e96d69](https://github.com/HanSeongLee/hit-counter/commit/8e96d69c6196abbdf5877ad464905cbb579fd028))
+* add Select component ([f40c6d0](https://github.com/HanSeongLee/hit-counter/commit/f40c6d037f118027b621a6962b091be84f187e3a))
+* add Tailwind CSS support with PostCSS configuration and update dependencies ([c3f2284](https://github.com/HanSeongLee/hit-counter/commit/c3f228422f747eb554b8a744e069d1bf4cbfb0ac))
+* **components/BadgeGenerator:** enhance Badge Generator with new UI components and improved layout ([717470e](https://github.com/HanSeongLee/hit-counter/commit/717470eaf090e76d4d226b94f0fcbb97fd55419d))
+* install shadcn/ui ([28698b2](https://github.com/HanSeongLee/hit-counter/commit/28698b2d650031a0b442d5c9ba6e1e4aa1986689))
+
 ## [1.3.0](https://github.com/HanSeongLee/hit-counter/compare/v1.2.0...v1.3.0) (2025-05-08)
 
 ### ✨ Features
