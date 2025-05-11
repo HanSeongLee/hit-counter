@@ -20,6 +20,7 @@
   },
   "dependencies": {
     "@radix-ui/react-label": "^2.1.6",
+    "@radix-ui/react-select": "^2.2.4",
     "@semantic-release/github": "^9.2.3",
     "@sentry/nextjs": "^8.47.0",
     "@svgr/webpack": "^6.2.1",
